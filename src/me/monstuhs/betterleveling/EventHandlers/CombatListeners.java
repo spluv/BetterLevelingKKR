@@ -4,6 +4,7 @@
  */
 package me.monstuhs.betterleveling.EventHandlers;
 
+import me.monstuhs.betterleveling.BetterLeveling;
 import me.monstuhs.betterleveling.Managers.CombatManager;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -28,19 +29,19 @@ public class CombatListeners implements Listener {
         
         //Check for headshot
         if(attacker instanceof Arrow && ((Arrow)attacker).getShooter() instanceof Player && defender instanceof LivingEntity){
-            damage = CombatManager.getDamageAfterHeadshotAttempt((Arrow)attacker, (LivingEntity)defender, damage);
+            damage = BetterLeveling.CombatManager.getDamageAfterHeadshotAttempt((Arrow)attacker, (LivingEntity)defender, damage);
             //Change attacker for subsequent checks
             attacker = ((Arrow)attacker).getShooter();
         }        
         
         //Check for crit        
         if(attacker instanceof Player) {
-            damage = CombatManager.getDamageAfterCritAttempt((Player)attacker, damage);
+            damage = BetterLeveling.CombatManager.getDamageAfterCritAttempt((Player)attacker, damage);
         }
         
         //Check for dodge        
         if (defender instanceof Player) {
-            damage = CombatManager.getDamageAfterDodgeAttempt((Player)defender, damage);            
+            damage = BetterLeveling.CombatManager.getDamageAfterDodgeAttempt((Player)defender, damage);            
         }
         
         

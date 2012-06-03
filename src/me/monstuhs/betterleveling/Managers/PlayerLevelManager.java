@@ -4,6 +4,7 @@
  */
 package me.monstuhs.betterleveling.Managers;
 
+import me.monstuhs.betterleveling.BetterLeveling;
 import me.monstuhs.betterleveling.Utilities.BukkitHelpers;
 import me.monstuhs.betterleveling.Utilities.ConfigConstants;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,10 +35,10 @@ public class PlayerLevelManager {
         
         int playerLevel = player.getLevel();
         
-        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_CRIT)       + ": " + CombatManager.getChanceToCrit(playerLevel)  + " / " + _config.getString(ConfigConstants.GlobalSettings.SETTINGS_COMBAT_MAX_CRIT_CHANCE));
-        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_DODGE)      + ": " + CombatManager.getChanceToDodge(playerLevel) + " / " + _config.getString(ConfigConstants.GlobalSettings.SETTINGS_COMBAT_MAX_DODGE_CHANCE));
-        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_DOUBLEDROP) + ": " + MiningManager.getChanceToDoubleDropPerLevel() * playerLevel);
-        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_INSTABREAK) + ": " + MiningManager.getChanceToBreakPerLevel() * playerLevel);        
+        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_CRIT)       + ": " + BetterLeveling.CombatManager.getChanceToCrit(playerLevel)  + " / " + _config.getString(ConfigConstants.GlobalSettings.SETTINGS_COMBAT_MAX_CRIT_CHANCE));
+        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_DODGE)      + ": " + BetterLeveling.CombatManager.getChanceToDodge(playerLevel) + " / " + _config.getString(ConfigConstants.GlobalSettings.SETTINGS_COMBAT_MAX_DODGE_CHANCE));
+        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_DOUBLEDROP) + ": " + BetterLeveling.MiningManager.getChanceToDoubleDropPerLevel() * playerLevel);
+        player.sendMessage(_config.getString(ConfigConstants.LocalizedMessages.CHANCE_TO_INSTABREAK) + ": " + BetterLeveling.MiningManager.getChanceToBreakPerLevel() * playerLevel);        
         
         double regenPerSecond = player.getLevel() * getRegenHalfHeartsPerLevel() / _regenDelay;
         player.sendMessage(BukkitHelpers.formatDouble(regenPerSecond) + " " + _config.getString(ConfigConstants.LocalizedMessages.EXTRA_REGEN));

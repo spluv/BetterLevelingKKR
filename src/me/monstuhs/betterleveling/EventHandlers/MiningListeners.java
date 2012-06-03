@@ -4,6 +4,7 @@
  */
 package me.monstuhs.betterleveling.EventHandlers;
 
+import me.monstuhs.betterleveling.BetterLeveling;
 import me.monstuhs.betterleveling.Managers.MiningManager;
 import me.monstuhs.betterleveling.Utilities.MiningHelpers;
 import org.bukkit.Material;
@@ -30,7 +31,7 @@ public class MiningListeners implements Listener {
         if (MiningHelpers.isToolCorrectForMaterial(event.getItemInHand().getType(), thisBlock.getType())) {
             
             if (MiningHelpers.isAttachedToFragileMaterial(event.getBlock()) == false) {
-                if (MiningManager.getInstaBreakForPlayer(event.getPlayer())) {
+                if (BetterLeveling.MiningManager.getInstaBreakForPlayer(event.getPlayer())) {
                     event.setInstaBreak(true);
                 }
             }
@@ -41,7 +42,7 @@ public class MiningListeners implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
 
         //Double-drop check
-        if (MiningHelpers.isOre(event.getBlock().getType()) && MiningManager.getDoubleDropForPlayer(event.getPlayer())) {
+        if (MiningHelpers.isOre(event.getBlock().getType()) && BetterLeveling.MiningManager.getDoubleDropForPlayer(event.getPlayer())) {
             Block minedBlock = event.getBlock();
             Material drop = MiningHelpers.getDropTypeForBlock(minedBlock.getType());
             minedBlock.getWorld().dropItemNaturally(minedBlock.getLocation(), new ItemStack(drop));

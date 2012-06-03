@@ -1,5 +1,5 @@
 name: Better Leveling
-version: 0.5
+version: 0.6.2
 main: me.monstuhs.betterleveling.BetterLeveling
 description: Factors player level into a number of Minecraft activities.
 author: monstuhs

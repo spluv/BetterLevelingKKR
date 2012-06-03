@@ -18,11 +18,11 @@ public class MiningManager {
     private static int _chanceToBreakPerLevel = 0;
     private static int _chanceToDoubleDropPerLevel = 0;
 
-    public static int getChanceToBreakPerLevel() {
+    public int getChanceToBreakPerLevel() {
         return _chanceToBreakPerLevel;
     }
 
-    public static int getChanceToDoubleDropPerLevel() {
+    public int getChanceToDoubleDropPerLevel() {
         return _chanceToDoubleDropPerLevel;
     }
     
@@ -31,12 +31,12 @@ public class MiningManager {
         _chanceToDoubleDropPerLevel = BetterLeveling.ConfigManager.getConfigFile().getInt(ConfigConstants.MiningActivities.ACTIVITY_MINING_PpL_DOUBLE_DROP);
     }
     
-    public static boolean getDoubleDropForPlayer(Player miner){        
+    public boolean getDoubleDropForPlayer(Player miner){        
         int chance = getChanceToDoubleDropPerLevel();
         return chance > 0 && new Random().nextInt(100) <= (miner.getLevel() * chance);
     }
     
-    public static boolean getInstaBreakForPlayer(Player miner){        
+    public boolean getInstaBreakForPlayer(Player miner){        
         int chance = getChanceToDoubleDropPerLevel();
         return chance > 0 && new Random().nextInt(100) <= (miner.getLevel() * chance);
     }
