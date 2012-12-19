@@ -14,30 +14,30 @@ import org.bukkit.entity.Player;
  * @author James
  */
 public class MiningManager {
-    
-    private static int _chanceToBreakPerLevel = 0;
-    private static int _chanceToDoubleDropPerLevel = 0;
 
-    public int getChanceToBreakPerLevel() {
+    private static double _chanceToBreakPerLevel = 0;
+    private static double _chanceToDoubleDropPerLevel = 0;
+
+    public double getChanceToBreakPerLevel() {
         return _chanceToBreakPerLevel;
     }
 
-    public int getChanceToDoubleDropPerLevel() {
+    public double getChanceToDoubleDropPerLevel() {
         return _chanceToDoubleDropPerLevel;
     }
-    
-    public MiningManager(){        
-        _chanceToBreakPerLevel = BetterLeveling.ConfigManager.getConfigFile().getInt(ConfigConstants.MiningActivities.ACTIVITY_MINING_PpL_INSTABREAK);
-        _chanceToDoubleDropPerLevel = BetterLeveling.ConfigManager.getConfigFile().getInt(ConfigConstants.MiningActivities.ACTIVITY_MINING_PpL_DOUBLE_DROP);
+
+    public MiningManager(){
+        _chanceToBreakPerLevel      = BetterLeveling.ConfigManager.getConfigFile().getDouble(ConfigConstants.MiningActivities.ACTIVITY_MINING_PpL_INSTABREAK);
+        _chanceToDoubleDropPerLevel = BetterLeveling.ConfigManager.getConfigFile().getDouble(ConfigConstants.MiningActivities.ACTIVITY_MINING_PpL_DOUBLE_DROP);
     }
-    
-    public boolean getDoubleDropForPlayer(Player miner){        
-        int chance = getChanceToDoubleDropPerLevel();
+
+    public boolean getDoubleDropForPlayer(Player miner){
+        double chance = getChanceToDoubleDropPerLevel();
         return chance > 0 && new Random().nextInt(100) <= (miner.getLevel() * chance);
     }
-    
-    public boolean getInstaBreakForPlayer(Player miner){        
-        int chance = getChanceToDoubleDropPerLevel();
+
+    public boolean getInstaBreakForPlayer(Player miner){
+        double chance = getChanceToDoubleDropPerLevel();
         return chance > 0 && new Random().nextInt(100) <= (miner.getLevel() * chance);
     }
 }
