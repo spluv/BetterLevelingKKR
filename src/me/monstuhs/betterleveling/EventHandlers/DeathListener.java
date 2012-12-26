@@ -24,7 +24,7 @@ public class DeathListener implements Listener {
         int newXP = BetterLeveling.PlayerLvlManager.getNewXPAfterDeath(deadBro);
         int droppedXP = BetterLeveling.PlayerLvlManager.getXPDropped(deadBro);
         
-        event.setNewTotalExp(newXP);
+        event.setNewExp(newXP);
         event.setDroppedExp(droppedXP);
     }
     
