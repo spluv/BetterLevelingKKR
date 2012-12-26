@@ -37,7 +37,7 @@ public class MiningManager {
     }
 
     public boolean getInstaBreakForPlayer(Player miner){
-        double chance = getChanceToDoubleDropPerLevel();
+        double chance = getChanceToBreakPerLevel();
         return chance > 0 && new Random().nextInt(100) <= (miner.getLevel() * chance);
     }
 }
